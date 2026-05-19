@@ -37,7 +37,7 @@ const productList: Product[] = [
     category: "Skuter Matik",
     price: 28000000,
     dp: 2000000,
-    tenor: [12, 18, 24, 36, 48],
+    tenor: [12, 18, 24, 36],
     image: "/images/products/vario-125.webp",
     description:
       "Honda Vario 125 menawarkan perpaduan sempurna antara gaya modern dan performa andal, dilengkapi teknologi eSP untuk efisiensi bahan bakar terbaik.",
@@ -76,7 +76,7 @@ const productList: Product[] = [
   category: "Skuter Matik",
   price: 29500000,
   dp: 3000000,
-  tenor: [12, 18, 24, 36, 48],
+  tenor: [12, 18, 24, 36],
 
   image: "/images/products/vario-160.webp",
 
@@ -97,7 +97,7 @@ const productList: Product[] = [
     category: "Maxi Skuter",
     price: 39500000,
     dp: 3000000,
-    tenor: [12, 18, 24, 36, 48],
+    tenor: [12, 18, 24, 36],
     image: "/images/products/pcx.webp",
     description:
       "Honda PCX 160 tampil elegan dan premium dengan mesin eSP+ 160cc yang bertenaga, cocok untuk perjalanan jauh maupun dalam kota.",
@@ -115,7 +115,7 @@ const productList: Product[] = [
   category: "Skuter Matik",
   price: 29500000,
   dp: 2500000,
-  tenor: [12, 18, 24, 36, 48],
+  tenor: [12, 18, 24, 36],
 
   image: "/images/products/stylo.webp",
 
@@ -135,9 +135,9 @@ const productList: Product[] = [
   name: "Yamaha NMAX Turbo",
   brand: "Yamaha",
   category: "Maxi Skuter",
-  price: 37300000,
+  price: 36300000,
   dp: 3000000,
-  tenor: [12, 18, 24, 36, 48],
+  tenor: [12, 18, 24, 36],
   image: "/images/products/Nmax.png",
 
   description:
@@ -177,7 +177,7 @@ const productList: Product[] = [
   name: "Yamaha Fazzio Hybrid",
   brand: "Yamaha",
   category: "Skuter Matik",
-  price: 24200000,
+  price: 25200000,
   dp: 2000000,
   tenor: [12, 18, 24, 36],
   image: "/images/products/Fazio.png",
@@ -202,7 +202,7 @@ const productList: Product[] = [
   category: "Motor Sport",
   price: 37000000,
   dp: 3000000,
-  tenor: [12, 18, 24, 36, 48],
+  tenor: [12, 18, 24, 36],
   image: "/images/products/Gsxr.webp",
 
   description:
