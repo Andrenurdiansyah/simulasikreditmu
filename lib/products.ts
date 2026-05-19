@@ -138,7 +138,7 @@ const productList: Product[] = [
   price: 37300000,
   dp: 3000000,
   tenor: [12, 18, 24, 36, 48],
-  image: "/images/products/placeholder-bike.webp",
+  image: "/images/products/Nmax.png",
 
   description:
     "Yamaha NMAX Turbo hadir dengan teknologi YECVT terbaru yang memberikan akselerasi lebih responsif serta fitur modern untuk perjalanan harian maupun touring.",
@@ -159,7 +159,7 @@ const productList: Product[] = [
   price: 32500000,
   dp: 2500000,
   tenor: [12, 18, 24, 36],
-  image: "/images/products/placeholder-bike.webp",
+  image: "/images/products/Aerox.png",
 
   description:
     "Yamaha Aerox Alpha memiliki desain sporty agresif dengan mesin Blue Core VVA yang bertenaga dan cocok untuk penggunaan harian.",
@@ -180,7 +180,7 @@ const productList: Product[] = [
   price: 24200000,
   dp: 2000000,
   tenor: [12, 18, 24, 36],
-  image: "/images/products/placeholder-bike.webp",
+  image: "/images/products/Fazio.png",
 
   description:
     "Yamaha Fazzio Hybrid menawarkan desain retro modern dengan teknologi hybrid ringan untuk penggunaan sehari-hari.",
@@ -194,47 +194,6 @@ const productList: Product[] = [
 },
 
 // Suzuki
-{
-  slug: "suzuki-avenis",
-  name: "Suzuki Avenis 125",
-  brand: "Suzuki",
-  category: "Skuter Matik",
-  price: 30500000,
-  dp: 2500000,
-  tenor: [12, 18, 24, 36],
-  image: "/images/products/placeholder-bike.webp",
-
-  description:
-    "Suzuki Avenis 125 menawarkan desain sporty dengan mesin irit serta bagasi luas untuk penggunaan harian.",
-
-  specs: {
-    Mesin: "124.3 cc, SOHC",
-    "Tenaga Maksimal": "8.7 PS @ 6.750 rpm",
-    Transmisi: "Otomatis CVT",
-    "Berat Kosong": "107 kg",
-  },
-},
-
-{
-  slug: "suzuki-burgman-street",
-  name: "Suzuki Burgman Street 125EX",
-  brand: "Suzuki",
-  category: "Maxi Skuter",
-  price: 26500000,
-  dp: 2000000,
-  tenor: [12, 18, 24, 36],
-  image: "/images/products/placeholder-bike.webp",
-
-  description:
-    "Suzuki Burgman Street 125EX hadir dengan gaya maxi scooter yang nyaman dan cocok untuk mobilitas perkotaan.",
-
-  specs: {
-    Mesin: "124 cc, SOHC",
-    "Tenaga Maksimal": "8.6 PS @ 6.500 rpm",
-    Transmisi: "Otomatis CVT",
-    "Berat Kosong": "112 kg",
-  },
-},
 
 {
   slug: "suzuki-gsx-r150",
@@ -244,7 +203,7 @@ const productList: Product[] = [
   price: 37000000,
   dp: 3000000,
   tenor: [12, 18, 24, 36, 48],
-  image: "/images/products/placeholder-bike.webp",
+  image: "/images/products/Gsxr.webp",
 
   description:
     "Suzuki GSX-R150 merupakan motor sport fairing ringan dengan performa tinggi dan desain agresif.",
