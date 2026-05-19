@@ -220,71 +220,88 @@ export default async function SimulasiPage({
   );
 }
 
-const styles: Record<string, React.CSSProperties> = {
+    const styles: Record<string, React.CSSProperties> = {
   breadcrumbWrap: {
     background: "var(--bg-muted)",
     borderBottom: "1px solid var(--border)",
     padding: "12px 0",
+    overflowX: "auto",
   },
+
   breadcrumb: {
     display: "flex",
     alignItems: "center",
     gap: 8,
     fontSize: 13,
+    whiteSpace: "nowrap",
   },
+
   breadcrumbLink: {
     color: "var(--text-muted)",
     textDecoration: "none",
   },
+
   breadcrumbSep: {
     color: "var(--text-light)",
   },
+
   breadcrumbCurrent: {
     color: "var(--text)",
     fontWeight: 500,
   },
+
   header: {
     background: "var(--bg-card)",
     borderBottom: "1px solid var(--border)",
     padding: "48px 0",
   },
+
   headerInner: {
-    display: "grid",
-    gridTemplateColumns: "280px 1fr",
-    gap: 48,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 32,
     alignItems: "center",
   },
- imageBox: {
-  position: "relative",
-  background: "var(--bg-muted)",
-  borderRadius: "var(--radius)",
-  height: 240,
-  width: "100%",
-  overflow: "hidden",
-},
-  emoji: {
-    fontSize: 96,
-    filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.1))",
+
+  imageBox: {
+    position: "relative",
+    background: "var(--bg-muted)",
+    borderRadius: "var(--radius)",
+    width: "100%",
+    maxWidth: 280,
+    height: 240,
+    overflow: "hidden",
+    margin: "0 auto",
+    flexShrink: 0,
   },
-  headerInfo: {},
+
+  headerInfo: {
+    flex: 1,
+    minWidth: 280,
+  },
+
   productTitle: {
     fontFamily: "var(--font-display)",
-    fontSize: "clamp(28px, 4vw, 40px)",
+    fontSize: "clamp(26px,5vw,40px)",
     fontWeight: 800,
     letterSpacing: "-0.02em",
     marginBottom: 12,
+    lineHeight: 1.2,
   },
+
   productDesc: {
     color: "var(--text-muted)",
     fontSize: 16,
     lineHeight: 1.7,
     marginBottom: 28,
   },
+
   priceRow: {
     display: "flex",
-    gap: 40,
     flexWrap: "wrap",
+    gap: 24,
   },
+
   priceLabel: {
     fontSize: 11,
     color: "var(--text-light)",
@@ -293,49 +310,63 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 600,
     marginBottom: 4,
   },
+
   priceValue: {
     fontFamily: "var(--font-display)",
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: 18,
     color: "var(--text)",
+    wordBreak: "break-word",
   },
+
   specsSection: {
     paddingBottom: 0,
   },
+
   specsTitle: {
     fontFamily: "var(--font-display)",
     fontSize: 22,
     fontWeight: 700,
     marginBottom: 20,
   },
+
   specsGrid: {
     background: "var(--bg-card)",
     border: "1px solid var(--border)",
     borderRadius: "var(--radius)",
     overflow: "hidden",
-    maxWidth: 600,
+    width: "100%",
   },
+
   specRow: {
     display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
     padding: "14px 20px",
     borderBottom: "1px solid var(--border)",
     fontSize: 14,
   },
+
   specKey: {
     color: "var(--text-muted)",
-    width: 180,
-    flexShrink: 0,
+    minWidth: 120,
+    fontWeight: 600,
   },
+
   specVal: {
     fontWeight: 600,
     color: "var(--text)",
+    flex: 1,
+    wordBreak: "break-word",
   },
+
   seoTitle: {
     fontFamily: "var(--font-display)",
     fontSize: 24,
     fontWeight: 700,
     marginBottom: 20,
   },
+
   seoBody: {
     display: "flex",
     flexDirection: "column",
@@ -344,6 +375,7 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1.8,
     fontSize: 15,
   },
+
   otherCard: {
     display: "flex",
     alignItems: "center",
@@ -354,14 +386,16 @@ const styles: Record<string, React.CSSProperties> = {
     border: "1px solid var(--border)",
     textDecoration: "none",
     color: "var(--text)",
-    transition: "box-shadow 0.2s ease",
+    flexWrap: "wrap",
   },
+
   otherName: {
     fontFamily: "var(--font-display)",
     fontWeight: 700,
     fontSize: 15,
     marginBottom: 4,
   },
+
   otherPrice: {
     fontSize: 13,
     color: "var(--text-muted)",
