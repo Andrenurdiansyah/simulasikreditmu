@@ -287,25 +287,182 @@ tenorBtnActive: {
     flexDirection: "column",
     gap: 14,
     marginBottom: 24,
+const styles: Record<string, React.CSSProperties> = {
+  wrapper: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px,1fr))",
+    gap: 24,
+    alignItems: "start",
   },
+
+  controls: {
+    background: "var(--bg-card)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border)",
+    borderRadius: "var(--radius)",
+    padding: 20,
+    width: "100%",
+    minWidth: 0,
+  },
+
+  title: {
+    fontFamily: "var(--font-display)",
+    fontSize: 22,
+    marginBottom: 8,
+  },
+
+  subtitle: {
+    color: "var(--text-muted)",
+    fontSize: 14,
+    marginBottom: 28,
+  },
+
+  field: {
+    marginBottom: 28,
+  },
+
+  fieldHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 10,
+    flexWrap: "wrap",
+    marginBottom: 10,
+  },
+
+  label: {
+    fontFamily: "var(--font-display)",
+    fontWeight: 600,
+    fontSize: 14,
+    color: "var(--text)",
+  },
+
+  value: {
+    fontFamily: "var(--font-display)",
+    fontWeight: 700,
+    fontSize: 15,
+    color: "var(--accent)",
+  },
+
+  slider: {
+    width: "100%",
+    accentColor: "var(--accent)",
+    cursor: "pointer",
+  },
+
+  sliderHints: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 8,
+    flexWrap: "wrap",
+    fontSize: 11,
+    color: "var(--text-light)",
+    marginTop: 6,
+  },
+
+  tenorGrid: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 8,
+    marginTop: 10,
+  },
+
+  tenorBtn: {
+    padding: "8px 16px",
+    borderRadius: "var(--radius-sm)",
+    borderWidth: "1.5px",
+    borderStyle: "solid",
+    borderColor: "var(--border)",
+    background: "var(--bg)",
+  },
+
+  tenorBtnActive: {
+    background: "var(--accent)",
+    borderWidth: "1.5px",
+    borderStyle: "solid",
+    borderColor: "var(--accent)",
+    color: "white",
+  },
+
+  result: {
+    background: "var(--text)",
+    borderRadius: "var(--radius)",
+    padding: 20,
+    color: "white",
+    width: "100%",
+    minWidth: 0,
+    position: "sticky",
+    top: 80,
+  },
+
+  resultHeader: {
+    textAlign: "center",
+    marginBottom: 24,
+    paddingBottom: 20,
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "rgba(255,255,255,0.1)",
+  },
+
+  resultLabel: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.5)",
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    fontWeight: 600,
+    fontFamily: "var(--font-display)",
+    display: "block",
+    marginBottom: 10,
+  },
+
+  cicilanBig: {
+    fontFamily: "var(--font-display)",
+    fontSize: "clamp(26px,7vw,36px)",
+    fontWeight: 800,
+    color: "var(--accent)",
+    letterSpacing: "-0.02em",
+    marginBottom: 8,
+    wordBreak: "break-word",
+  },
+
+  resultNote: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.4)",
+  },
+
+  breakdown: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+    marginBottom: 24,
+  },
+
   breakdownRow: {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
+    gap: 10,
     fontSize: 14,
     color: "rgba(255,255,255,0.65)",
   },
+
   breakdownVal: {
     fontFamily: "var(--font-display)",
     fontWeight: 600,
     color: "white",
+    textAlign: "right",
+    wordBreak: "break-word",
   },
- sep:{ 
-    borderTopWidth: "1px", 
-    borderTopStyle: "solid", 
+
+  sep: {
+    borderTopWidth: "1px",
+    borderTopStyle: "solid",
     borderTopColor: "#eee",
-    borderRight: "none", 
-    borderBottom: "none", 
-    borderLeft: "none" 
+    borderRight: "none",
+    borderBottom: "none",
+    borderLeft: "none",
   },
 
   breakdownTotal: {
@@ -314,6 +471,7 @@ tenorBtnActive: {
     fontSize: 16,
     color: "white",
   },
+
   disclaimer: {
     fontSize: 12,
     color: "rgba(255,255,255,0.3)",
