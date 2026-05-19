@@ -386,23 +386,117 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   result: {
+const styles: Record<string, React.CSSProperties> = {
+  wrapper: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+    gap: 24,
+    alignItems: "start",
+    width: "100%",
+  },
+
+  controls: {
+    background: "var(--bg-card)",
+    border: "1px solid var(--border)",
+    borderRadius: "var(--radius)",
+    padding: 24,
+    width: "100%",
+    minWidth: 0,
+  },
+
+  title: {
+    fontFamily: "var(--font-display)",
+    fontSize: 22,
+    marginBottom: 8,
+  },
+
+  subtitle: {
+    color: "var(--text-muted)",
+    fontSize: 14,
+    marginBottom: 28,
+  },
+
+  field: {
+    marginBottom: 28,
+    minWidth: 0,
+  },
+
+  fieldHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    gap: 12,
+    flexWrap: "wrap",
+    marginBottom: 10,
+  },
+
+  label: {
+    fontFamily: "var(--font-display)",
+    fontWeight: 600,
+    fontSize: 14,
+    color: "var(--text)",
+  },
+
+  value: {
+    fontFamily: "var(--font-display)",
+    fontWeight: 700,
+    fontSize: 15,
+    color: "var(--accent)",
+    textAlign: "right",
+    wordBreak: "break-word",
+  },
+
+  slider: {
+    width: "100%",
+    accentColor: "var(--accent)",
+    cursor: "pointer",
+  },
+
+  sliderHints: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 8,
+    flexWrap: "wrap",
+    fontSize: 11,
+    color: "var(--text-light)",
+    marginTop: 6,
+  },
+
+  tenorGrid: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 8,
+    marginTop: 10,
+  },
+
+  tenorBtn: {
+    padding: "8px 14px",
+    borderRadius: "var(--radius-sm)",
+    border: "1.5px solid var(--border)",
+    background: "var(--bg)",
+    flex: "1 0 auto",
+  },
+
+  tenorBtnActive: {
+    background: "var(--accent)",
+    border: "1.5px solid var(--accent)",
+    color: "white",
+  },
+
+  result: {
     background: "var(--text)",
     borderRadius: "var(--radius)",
-    padding: 20,
+    padding: 24,
     color: "white",
     width: "100%",
     minWidth: 0,
-    position: "sticky",
-    top: 80,
   },
 
   resultHeader: {
     textAlign: "center",
-    marginBottom: 24,
-    paddingBottom: 20,
-    borderBottomWidth: "1px",
-    borderBottomStyle: "solid",
-    borderBottomColor: "rgba(255,255,255,0.1)",
+    marginBottom: 32,
+    paddingBottom: 28,
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
   },
 
   resultLabel: {
@@ -411,17 +505,15 @@ const styles: Record<string, React.CSSProperties> = {
     textTransform: "uppercase",
     letterSpacing: "0.06em",
     fontWeight: 600,
-    fontFamily: "var(--font-display)",
     display: "block",
     marginBottom: 10,
   },
 
   cicilanBig: {
     fontFamily: "var(--font-display)",
-    fontSize: "clamp(26px,7vw,36px)",
+    fontSize: "clamp(24px,6vw,36px)",
     fontWeight: 800,
     color: "var(--accent)",
-    letterSpacing: "-0.02em",
     marginBottom: 8,
     wordBreak: "break-word",
   },
@@ -436,16 +528,20 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: "column",
     gap: 14,
     marginBottom: 24,
+    minWidth: 0,
   },
 
   breakdownRow: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    gap: 12,
     flexWrap: "wrap",
-    gap: 10,
     fontSize: 14,
     color: "rgba(255,255,255,0.65)",
+  },
+
+  breakdownLabel: {
+    flex: 1,
   },
 
   breakdownVal: {
@@ -457,16 +553,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   sep: {
-    borderTopWidth: "1px",
-    borderTopStyle: "solid",
-    borderTopColor: "#eee",
-    borderRight: "none",
-    borderBottom: "none",
-    borderLeft: "none",
+    border: "none",
+    borderTop: "1px solid rgba(255,255,255,0.1)",
   },
 
   breakdownTotal: {
-    fontFamily: "var(--font-display)",
     fontWeight: 700,
     fontSize: 16,
     color: "white",
@@ -476,6 +567,5 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: 12,
     color: "rgba(255,255,255,0.3)",
     lineHeight: 1.6,
-    fontStyle: "italic",
   },
 };
