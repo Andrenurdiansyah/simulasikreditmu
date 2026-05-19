@@ -1,122 +1,139 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header style={styles.header}>
-      <nav style={styles.nav} className="container">
-        <Link href="/" style={styles.logo}>
-          <span style={styles.logoIcon}>⚡</span>
-          <span style={styles.logoText}>SimulasiKreditmu</span>
-          <span style={styles.logoDot}>.my.id</span>
+    <header className="header">
+      <nav className="nav container">
+        {/* Logo */}
+        <Link href="/" className="logo" onClick={() => setMenuOpen(false)}>
+          <span className="logoIcon">⚡</span>
+          <span className="logoText">SimulasiKreditmu</span>
+          <span className="logoDot">.my.id</span>
         </Link>
 
-        <div style={{ ...styles.links, ...(menuOpen ? styles.linksOpen : {}) }}>
-          <Link href="/" style={styles.link} onClick={() => setMenuOpen(false)}>
-            Beranda
-          </Link>
-          <Link href="/#produk" style={styles.link} onClick={() => setMenuOpen(false)}>
-            Produk
-          </Link>
-          <Link href="/tentang" style={styles.link} onClick={() => setMenuOpen(false)}>
-            Tentang
-          </Link>
-          <Link href="/kontak" style={styles.link} onClick={() => setMenuOpen(false)}>
-            Kontak
-          </Link>
+        {/* Links */}
+        <div className={`links ${menuOpen ? "open" : ""}`}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Beranda</Link>
+          <Link href="/#produk" onClick={() => setMenuOpen(false)}>Produk</Link>
+          <Link href="/tentang" onClick={() => setMenuOpen(false)}>Tentang</Link>
+          <Link href="/kontak" onClick={() => setMenuOpen(false)}>Kontak</Link>
         </div>
 
+        {/* Hamburger */}
         <button
-          style={styles.hamburger}
+          className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span style={{ ...styles.bar, ...(menuOpen ? styles.barTop : {}) }} />
-          <span style={{ ...styles.bar, ...(menuOpen ? styles.barMid : {}) }} />
-          <span style={{ ...styles.bar, ...(menuOpen ? styles.barBot : {}) }} />
+          <span />
+          <span />
+          <span />
         </button>
       </nav>
+
+      {/* STYLE */}
+      <style jsx>{`
+        .header {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(247, 246, 242, 0.92);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 64px;
+        }
+
+        .logo {
+          display: flex;
+          gap: 6px;
+          text-decoration: none;
+          align-items: center;
+        }
+
+        .logoText {
+          font-weight: 800;
+        }
+
+        .logoDot {
+          color: var(--accent);
+          font-weight: 800;
+        }
+
+        .links {
+          display: flex;
+          gap: 8px;
+        }
+
+        .links a {
+          padding: 8px 14px;
+          border-radius: 8px;
+          color: var(--text-muted);
+          text-decoration: none;
+        }
+
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          gap: 5px;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+
+        .hamburger span {
+          width: 22px;
+          height: 2px;
+          background: var(--text);
+          transition: 0.2s;
+        }
+
+        /* ANIMASI X */
+        .hamburger.active span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+          .hamburger {
+            display: flex;
+          }
+
+          .links {
+            position: absolute;
+            top: 64px;
+            right: 0;
+            left: 0;
+            flex-direction: column;
+            background: rgba(247, 246, 242, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 12px;
+            display: none;
+          }
+
+          .links.open {
+            display: flex;
+          }
+        }
+      `}</style>
     </header>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  header: {
-    position: "sticky",
-    top: 0,
-    zIndex: 100,
-    background: "rgba(247, 246, 242, 0.92)",
-    backdropFilter: "blur(12px)",
-    borderBottom: "1px solid var(--border)",
-  },
-  nav: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 64,
-    gap: 32,
-  },
-  logo: {
-    display: "flex",
-    alignItems: "center",
-    gap: 6,
-    textDecoration: "none",
-    flexShrink: 0,
-  },
-  logoIcon: {
-    fontSize: 20,
-  },
-  logoText: {
-    fontFamily: "var(--font-display)",
-    fontWeight: 800,
-    fontSize: 18,
-    color: "var(--text)",
-    letterSpacing: "-0.02em",
-  },
-  logoDot: {
-    fontFamily: "var(--font-display)",
-    fontWeight: 800,
-    fontSize: 18,
-    color: "var(--accent)",
-    letterSpacing: "-0.02em",
-  },
-  links: {
-    display: "flex",
-    alignItems: "center",
-    gap: 8,
-  },
-  linksOpen: {},
-  link: {
-    padding: "8px 14px",
-    borderRadius: "var(--radius-sm)",
-    fontSize: 15,
-    fontWeight: 500,
-    color: "var(--text-muted)",
-    transition: "color 0.15s ease, background 0.15s ease",
-  },
-  hamburger: {
-    display: "none",
-    flexDirection: "column",
-    gap: 5,
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-    padding: 8,
-  },
-  bar: {
-    display: "block",
-    width: 22,
-    height: 2,
-    background: "var(--text)",
-    borderRadius: 2,
-    transition: "all 0.2s ease",
-  },
-  barTop: { transform: "translateY(7px) rotate(45deg)" },
-  barMid: { opacity: 0 },
-  barBot: { transform: "translateY(-7px) rotate(-45deg)" },
-};
