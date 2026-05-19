@@ -1,4 +1,4 @@
-# SimulasiKredit.id
+# SimulasiKreditmu.my.id
 
 Website simulasi kredit motor yang SEO-friendly dan siap monetisasi.
 
