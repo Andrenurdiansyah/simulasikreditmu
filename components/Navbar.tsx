@@ -136,4 +136,6 @@ export default function Navbar() {
       `}</style>
     </header>
   );
+
 }
+

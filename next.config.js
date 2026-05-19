@@ -8,7 +8,7 @@ const nextConfig = {
   compress: true,
 
   devIndicators: {
-    position: "bottom-right",
+    buildActivity: false, // 🔥 ini yang matiin balonnya
   },
 
   reactStrictMode: true,
