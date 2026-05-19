@@ -129,6 +129,133 @@ const productList: Product[] = [
     "Berat Kosong": "118 kg",
   },
 },
+  // Yamaha
+{
+  slug: "yamaha-nmax-turbo",
+  name: "Yamaha NMAX Turbo",
+  brand: "Yamaha",
+  category: "Maxi Skuter",
+  price: 37300000,
+  dp: 3000000,
+  tenor: [12, 18, 24, 36, 48],
+  image: "/images/products/placeholder-bike.webp",
+
+  description:
+    "Yamaha NMAX Turbo hadir dengan teknologi YECVT terbaru yang memberikan akselerasi lebih responsif serta fitur modern untuk perjalanan harian maupun touring.",
+
+  specs: {
+    Mesin: "155 cc, SOHC, VVA",
+    "Tenaga Maksimal": "15.4 PS @ 8.000 rpm",
+    Transmisi: "Otomatis CVT",
+    "Berat Kosong": "135 kg",
+  },
+},
+
+{
+  slug: "yamaha-aerox-alpha",
+  name: "Yamaha Aerox Alpha",
+  brand: "Yamaha",
+  category: "Skuter Sport",
+  price: 32500000,
+  dp: 2500000,
+  tenor: [12, 18, 24, 36],
+  image: "/images/products/placeholder-bike.webp",
+
+  description:
+    "Yamaha Aerox Alpha memiliki desain sporty agresif dengan mesin Blue Core VVA yang bertenaga dan cocok untuk penggunaan harian.",
+
+  specs: {
+    Mesin: "155 cc, SOHC, VVA",
+    "Tenaga Maksimal": "15.4 PS @ 8.000 rpm",
+    Transmisi: "Otomatis CVT",
+    "Berat Kosong": "125 kg",
+  },
+},
+
+{
+  slug: "yamaha-fazzio",
+  name: "Yamaha Fazzio Hybrid",
+  brand: "Yamaha",
+  category: "Skuter Matik",
+  price: 24200000,
+  dp: 2000000,
+  tenor: [12, 18, 24, 36],
+  image: "/images/products/placeholder-bike.webp",
+
+  description:
+    "Yamaha Fazzio Hybrid menawarkan desain retro modern dengan teknologi hybrid ringan untuk penggunaan sehari-hari.",
+
+  specs: {
+    Mesin: "125 cc, Blue Core Hybrid",
+    "Tenaga Maksimal": "8.4 PS @ 6.500 rpm",
+    Transmisi: "Otomatis CVT",
+    "Berat Kosong": "95 kg",
+  },
+},
+
+// Suzuki
+{
+  slug: "suzuki-avenis",
+  name: "Suzuki Avenis 125",
+  brand: "Suzuki",
+  category: "Skuter Matik",
+  price: 30500000,
+  dp: 2500000,
+  tenor: [12, 18, 24, 36],
+  image: "/images/products/placeholder-bike.webp",
+
+  description:
+    "Suzuki Avenis 125 menawarkan desain sporty dengan mesin irit serta bagasi luas untuk penggunaan harian.",
+
+  specs: {
+    Mesin: "124.3 cc, SOHC",
+    "Tenaga Maksimal": "8.7 PS @ 6.750 rpm",
+    Transmisi: "Otomatis CVT",
+    "Berat Kosong": "107 kg",
+  },
+},
+
+{
+  slug: "suzuki-burgman-street",
+  name: "Suzuki Burgman Street 125EX",
+  brand: "Suzuki",
+  category: "Maxi Skuter",
+  price: 26500000,
+  dp: 2000000,
+  tenor: [12, 18, 24, 36],
+  image: "/images/products/placeholder-bike.webp",
+
+  description:
+    "Suzuki Burgman Street 125EX hadir dengan gaya maxi scooter yang nyaman dan cocok untuk mobilitas perkotaan.",
+
+  specs: {
+    Mesin: "124 cc, SOHC",
+    "Tenaga Maksimal": "8.6 PS @ 6.500 rpm",
+    Transmisi: "Otomatis CVT",
+    "Berat Kosong": "112 kg",
+  },
+},
+
+{
+  slug: "suzuki-gsx-r150",
+  name: "Suzuki GSX-R150",
+  brand: "Suzuki",
+  category: "Motor Sport",
+  price: 37000000,
+  dp: 3000000,
+  tenor: [12, 18, 24, 36, 48],
+  image: "/images/products/placeholder-bike.webp",
+
+  description:
+    "Suzuki GSX-R150 merupakan motor sport fairing ringan dengan performa tinggi dan desain agresif.",
+
+  specs: {
+    Mesin: "147.3 cc, DOHC",
+    "Tenaga Maksimal": "19.1 PS @ 10.500 rpm",
+    Transmisi: "Manual 6 Percepatan",
+    "Berat Kosong": "131 kg",
+  },
+},
 ];
 
 // Keyed by slug for easy lookup
