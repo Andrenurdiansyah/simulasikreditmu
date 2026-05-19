@@ -38,7 +38,7 @@ const productList: Product[] = [
     price: 28000000,
     dp: 2000000,
     tenor: [12, 18, 24, 36, 48],
-    image: "/images/products/vario 125.webp",
+    image: "/images/products/vario-125.webp",
     description:
       "Honda Vario 125 menawarkan perpaduan sempurna antara gaya modern dan performa andal, dilengkapi teknologi eSP untuk efisiensi bahan bakar terbaik.",
     specs: {
@@ -78,7 +78,7 @@ const productList: Product[] = [
   dp: 3000000,
   tenor: [12, 18, 24, 36, 48],
 
-  image: "/images/products/vario 160.webp",
+  image: "/images/products/vario-160.webp",
 
   description:
     "Honda Vario 160 hadir dengan desain sporty modern dan mesin eSP+ 160cc yang bertenaga, memberikan performa responsif sekaligus efisiensi bahan bakar untuk penggunaan sehari-hari.",
