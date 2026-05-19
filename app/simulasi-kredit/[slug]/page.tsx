@@ -5,9 +5,11 @@ import LoanCalculator from "@/components/LoanCalculator";
 import { getProductBySlug, getAllProducts } from "@/lib/products";
 import Image from "next/image";
 
-interface Props {
-  params: { slug: string };
-}
+type Props = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
 export async function generateStaticParams() {
   const products = getAllProducts();
@@ -19,8 +21,13 @@ export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+
+  const { slug } = await params;
+
+  const product = getProductBySlug(slug);
   if (!product) return {};
 
   return {
@@ -41,9 +48,17 @@ function formatRupiah(amount: number) {
   }).format(amount);
 }
 
-export default function SimulasiPage({ params }: Props) {
-  console.log("Current slug:", params.slug);
-  const product = getProductBySlug(params.slug);
+export default async function SimulasiPage({
+  params,
+}: Props) {
+
+  const { slug } = await params;
+
+  console.log("Current slug:", slug);
+
+  const product = getProductBySlug(slug);
+
+  console.log("Product found:", product);
   if (!product) notFound();
 
   const allProducts = getAllProducts().filter((p) => p.slug !== product.slug);
