@@ -11,6 +11,11 @@ interface Props {
 
 export async function generateStaticParams() {
   const products = getAllProducts();
+
+  console.log(
+    "Generated slugs:",
+    products.map((p) => p.slug)
+  );
   return products.map((p) => ({ slug: p.slug }));
 }
 
@@ -37,6 +42,7 @@ function formatRupiah(amount: number) {
 }
 
 export default function SimulasiPage({ params }: Props) {
+  console.log("Current slug:", params.slug);
   const product = getProductBySlug(params.slug);
   if (!product) notFound();
 
