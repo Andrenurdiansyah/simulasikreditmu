@@ -25,30 +25,41 @@ export default function LoanCalculator({ product }: LoanCalculatorProps) {
 );
   const [bunga, setBunga] = useState(14); // persen per tahun flat
 
-  const ADMIN_FEE = 1_000_000;
+const ADMIN_FEE = 1_000_000;
 const PROVISION_FEE = 1_000_000;
+const FIDUCIA_FEE = 500_000;
+
+// asumsi: asuransi TLO per tahun (misal 1 juta/tahun)
+const TLO_ANNUAL = 1_500_000;
 
 const result = useMemo(() => {
   const pokok = product.price - dp;
 
-  const biayaTambahan = ADMIN_FEE + PROVISION_FEE;
+  // biaya 1x di awal (masuk financing)
+  const biayaTambahan =
+    ADMIN_FEE + PROVISION_FEE + FIDUCIA_FEE;
 
-  // principal yang benar-benar dibiayai (kayak di leasing)
+  // asuransi TLO dibagi tenor (monthly burden)
+  const asuransiPerBulan = TLO_ANNUAL / 12;
+
+  // principal yang dibiayai leasing
   const pv = pokok + biayaTambahan;
 
-  const r = bunga / 100 / 12; // monthly rate
+  const r = bunga / 100 / 12;
   const n = tenor;
 
-  // PMT (annuity)
-  const cicilan =
+  const cicilanPokok =
     r === 0
       ? pv / n
       : (pv * r * Math.pow(1 + r, n)) /
         (Math.pow(1 + r, n) - 1);
 
+  // total cicilan + asuransi bulanan
+  const cicilan = cicilanPokok + asuransiPerBulan;
+
   const totalBayar = cicilan * n;
 
-  const totalBunga = totalBayar - pv;
+  const totalBunga = (cicilanPokok * n) - pv;
 
   const dpPercent = (dp / product.price) * 100;
 
@@ -56,6 +67,7 @@ const result = useMemo(() => {
     pokok,
     biayaTambahan,
     pv,
+    asuransiPerBulan,
     totalBunga,
     totalBayar,
     cicilan,
@@ -135,7 +147,7 @@ const result = useMemo(() => {
           />
           <div style={styles.sliderHints}>
             <span>8%</span>
-            <span>24%</span>
+            <span>30%</span>
           </div>
         </div>
       </div>
