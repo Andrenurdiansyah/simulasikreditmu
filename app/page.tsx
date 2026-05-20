@@ -61,11 +61,21 @@ export default function HomePage() {
           <p className="section-subtitle">
             Klik produk untuk menghitung simulasi kredit secara detail.
           </p>
-          <div className="grid-3">
-            {products.map((product) => (
-              <Card key={product.slug} product={product} />
-            ))}
-          </div>
+<div style={styles.carousel}>
+  {products.slice(0, 8).map((product) => (
+    <div key={product.slug} style={styles.slide}>
+      <Card product={product} />
+    </div>
+  ))}
+</div>
+
+<div style={{ textAlign: "center", marginTop: 24 }}>
+  <Link href="/#produk" className="btn btn-outline">
+    Lihat semua motor →
+  </Link>
+</div>
+  ))}
+</div>
         </div>
       </section>
 
@@ -230,4 +240,20 @@ const styles: Record<string, React.CSSProperties> = {
     color: "rgba(255,255,255,0.5)",
     fontSize: 15,
   },
+  carousel: {
+  display: "flex",
+  gap: 16,
+  overflowX: "auto",
+  paddingBottom: 8,
+
+  // desktop fallback feel lebih rapi
+  scrollSnapType: "x mandatory",
+  WebkitOverflowScrolling: "touch",
+},
+
+slide: {
+  flex: "0 0 auto",
+  width: 280,
+  scrollSnapAlign: "start",
+},
 };
