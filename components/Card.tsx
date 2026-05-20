@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Product } from "@/lib/products";
 import Image from "next/image";
+import { getAllArticles } from "@/lib/articles";
+
+
 
 function formatRupiah(amount: number): string {
   return new Intl.NumberFormat("id-ID", {
@@ -23,6 +26,10 @@ interface CardProps {
 }
 
 export default function Card({ product }: CardProps) {
+
+  const article = getAllArticles().find(
+  (a) => a.productSlug === product.slug
+);
   const defaultTenor = product.tenor.includes(36)
   ? 36
   : product.tenor[Math.floor(product.tenor.length / 2)];
