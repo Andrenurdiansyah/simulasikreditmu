@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     "angsuran motor",
     "kalkulator kredit",
   ],
+
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "id_ID",
