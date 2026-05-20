@@ -65,7 +65,7 @@ export default function Card({ product }: CardProps) {
 
           {/* LINK ARTIKEL SEO */}
 <Link
-  href={`/artikel/${product.slug}`}
+  href={`/artikel/${product.slug}-kredit-dp-ringan-cicilan-murah`}
   style={{
     fontSize: 12,
     color: "var(--accent)",
@@ -74,7 +74,7 @@ export default function Card({ product }: CardProps) {
     marginBottom: 12,
   }}
 >
-  Baca artikel DP ringan →
+  Baca artikel kredit →
 </Link>
 
           <hr style={styles.sep} />
