@@ -202,7 +202,7 @@ export default async function SimulasiPage({
           <h2 style={{ ...styles.seoTitle, marginBottom: 32 }}>
             Motor Lainnya
           </h2>
-          <div className="grid-3">
+          <div style={styles.carousel}>
             {allProducts.slice(0, 3).map((p) => (
               <Link key={p.slug} href={`/simulasi-kredit/${p.slug}`} style={styles.otherCard}>
                 <span style={{ fontSize: 32 }}>🏍️</span>
@@ -387,6 +387,9 @@ export default async function SimulasiPage({
     textDecoration: "none",
     color: "var(--text)",
     flexWrap: "wrap",
+    scrollSnapAlign: "start",
+minWidth: 240,
+flex: "0 0 auto",
   },
 
   otherName: {
@@ -400,4 +403,11 @@ export default async function SimulasiPage({
     fontSize: 13,
     color: "var(--text-muted)",
   },
+  carousel: {
+  display: "flex",
+  gap: 16,
+  overflowX: "auto",
+  paddingBottom: 8,
+  scrollSnapType: "x mandatory",
+},
 };
