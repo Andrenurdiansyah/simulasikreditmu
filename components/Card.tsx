@@ -29,7 +29,7 @@ export default function Card({ product }: CardProps) {
   const cicilan = estimateCicilan(product.price, product.dp, defaultTenor);
 
   return (
-    <Link href={`/simulasi-kredit/${product.slug}-dp-ringan-cicilan-murah`} style={styles.wrapper}>
+    <Link href={`/simulasi-kredit/${product.slug}`} style={styles.wrapper}>
       <article style={styles.card}>
         {/* Image placeholder / category badge */}
       <div style={styles.imageArea}>
