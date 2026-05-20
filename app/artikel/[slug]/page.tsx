@@ -13,7 +13,11 @@ type Props = {
 export async function generateStaticParams() {
   const { getAllArticles } = await import("@/lib/articles");
 
-  return getAllArticles().map((a) => ({
+  const data = getAllArticles();
+
+  console.log("ARTICLES:", data);
+
+  return data.map((a) => ({
     slug: a.slug,
   }));
 }
