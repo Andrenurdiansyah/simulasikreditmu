@@ -5,15 +5,14 @@ import { getArticleBySlug } from "@/lib/articles";
 import { getProductBySlug } from "@/lib/products";
 
 type Props = {
-  params: { slug: string };
+  params: {
+    slug: string;
+  };
 };
 
 export async function generateStaticParams() {
   const { getAllArticles } = await import("@/lib/articles");
-
-  return getAllArticles().map((a) => ({
-    slug: a.slug,
-  }));
+  return getAllArticles().map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
@@ -27,11 +26,7 @@ export async function generateMetadata({
 
   return {
     title: article.title,
-    description: `Simulasi kredit ${product.name} DP ringan, cicilan terjangkau, tenor fleksibel. Hitung sekarang sesuai kemampuan kamu.`,
-    openGraph: {
-      title: article.title,
-      description: product.description,
-    },
+    description: `Simulasi kredit ${product.name} DP ringan, cicilan bulanan terjangkau, dan tenor fleksibel. Hitung estimasi sekarang.`,
   };
 }
 
@@ -45,23 +40,17 @@ export default function ArticlePage({ params }: Props) {
   return (
     <div
       className="container"
-      style={{
-        maxWidth: 820,
-        padding: "48px 0",
-        lineHeight: 1.8,
-      }}
+      style={{ maxWidth: 820, padding: "48px 0", lineHeight: 1.8 }}
     >
-      {/* TITLE */}
       <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 12 }}>
         {article.title}
       </h1>
 
       <p style={{ color: "#666", marginBottom: 24 }}>
-        Lagi cari <b>{product.name}</b> dengan DP ringan? Ini simulasi biar kamu
-        bisa ngukur kemampuan cicilan sebelum ambil kredit.
+        Update terbaru simulasi kredit <b>{product.name}</b> dengan skema DP ringan
+        dan cicilan yang bisa disesuaikan dengan kondisi keuangan kamu.
       </p>
 
-      {/* CTA BOX */}
       <div
         style={{
           padding: 16,
@@ -85,44 +74,21 @@ export default function ArticlePage({ params }: Props) {
         </Link>
       </div>
 
-      {/* SECTION */}
-      <h2>Kenapa DP ringan banyak dipilih?</h2>
+      <h2>Kenapa banyak orang pilih DP ringan?</h2>
       <p>
-        Karena kamu bisa punya motor tanpa harus keluar uang besar di awal.
-        Cocok buat yang pengen cash flow tetap aman.
+        DP ringan bikin kamu bisa punya motor tanpa harus keluar uang besar di awal.
       </p>
 
-      <h2>Simulasi {product.name}</h2>
+      <h2>Simulasi kredit {product.name}</h2>
       <p>
-        Harga OTR sekarang:{" "}
-        <b>Rp {product.price.toLocaleString("id-ID")}</b>
+        Harga OTR <b>Rp {product.price.toLocaleString("id-ID")}</b>
       </p>
 
-      <ul>
-        <li>DP fleksibel sesuai leasing</li>
-        <li>Tenor 11–36 bulan</li>
-        <li>Bunga flat mengikuti kebijakan pembiayaan</li>
-      </ul>
-
-      <h2>Worth it nggak?</h2>
+      <h2>Apakah worth it?</h2>
       <p>
-        Kalau butuh kendaraan cepat tanpa nunggu nabung lama, ini bisa jadi
-        opsi. Tapi tetap harus hitung cicilan biar aman tiap bulan.
+        Kalau butuh motor cepat tanpa nabung lama, ini opsi realistis.
       </p>
 
-      {/* FAQ */}
-      <h2>FAQ</h2>
-
-      <h3>Berapa DP minimal?</h3>
-      <p>Biasanya 10%–30% tergantung leasing.</p>
-
-      <h3>Bisa DP ringan?</h3>
-      <p>Bisa, tapi tenor atau bunga bisa menyesuaikan.</p>
-
-      <h3>Cicilan berapa?</h3>
-      <p>Gunakan kalkulator untuk hasil paling akurat.</p>
-
-      {/* FINAL CTA */}
       <div
         style={{
           marginTop: 40,
@@ -132,16 +98,11 @@ export default function ArticlePage({ params }: Props) {
           borderRadius: 12,
         }}
       >
-        <h3 style={{ marginBottom: 8 }}>Coba simulasi sekarang</h3>
-        <p style={{ opacity: 0.8 }}>
-          Atur DP, tenor, dan bunga sesuai kondisi kamu.
-        </p>
+        <h3 style={{ marginBottom: 8 }}>Coba hitung sekarang</h3>
 
         <Link
           href={`/simulasi-kredit/${product.slug}`}
           style={{
-            display: "inline-block",
-            marginTop: 12,
             color: "#fff",
             fontWeight: 700,
             textDecoration: "underline",
