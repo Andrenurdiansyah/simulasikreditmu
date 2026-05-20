@@ -63,7 +63,7 @@ export default function HomePage() {
     </p>
 
     <div style={styles.carousel}>
-      {products.slice(0, 8).map((product) => (
+      {products.map((product) => (
         <div key={product.slug} style={styles.slide}>
           <Card product={product} />
         </div>
