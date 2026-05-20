@@ -203,7 +203,7 @@ export default async function SimulasiPage({
             Motor Lainnya
           </h2>
           <div style={styles.carousel}>
-            {allProducts.slice(0, 3).map((p) => (
+            {allProducts.map((p) => (
               <Link key={p.slug} href={`/simulasi-kredit/${p.slug}`} style={styles.otherCard}>
                 <span style={{ fontSize: 32 }}>🏍️</span>
                 <div>
