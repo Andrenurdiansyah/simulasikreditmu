@@ -27,9 +27,13 @@ interface CardProps {
 
 export default function Card({ product }: CardProps) {
 
-  const article = getAllArticles().find(
-  (a) => a.productSlug === product.slug
-);
+ const articles = getAllArticles().filter(
+    (a) => a.productSlug === product.slug
+  );
+
+  const article = articles[0]; // selalu 1 biar aman
+
+
   const defaultTenor = product.tenor.includes(36)
   ? 36
   : product.tenor[Math.floor(product.tenor.length / 2)];
@@ -70,21 +74,22 @@ export default function Card({ product }: CardProps) {
           <h3 style={styles.name}>{product.name}</h3>
           <p style={styles.desc}>{product.description.slice(0, 90)}…</p>
 
-          {/* LINK ARTIKEL SEO */}
-{article && (
-  <Link
-    href={`/artikel/${article.slug}`}
-    style={{
-      fontSize: 12,
-      color: "var(--accent)",
-      fontWeight: 600,
-      display: "inline-block",
-      marginBottom: 12,
-    }}
-  >
-    Baca artikel kredit →
-  </Link>
-)}
+          
+{/* ARTICLE LINK */}
+          {article && (
+            <Link
+              href={`/artikel/${article.slug}`}
+              style={{
+                fontSize: 12,
+                color: "var(--accent)",
+                fontWeight: 600,
+                display: "inline-block",
+                marginBottom: 12,
+              }}
+            >
+              Baca artikel kredit →
+            </Link>
+          )}
 
           <hr style={styles.sep} />
 

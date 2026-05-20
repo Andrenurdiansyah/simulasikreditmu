@@ -13,15 +13,15 @@ type Props = {
   };
 };
 
-export async function generateStaticParams() {
-  const { getAllArticles } = await import("@/lib/articles");
+export function generateStaticParams() {
+  const { getAllArticles } = require("@/lib/articles");
 
-  return getAllArticles().map((a) => ({
+  return getAllArticles().map((a: any) => ({
     slug: a.slug,
   }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export function generateMetadata({ params }: Props): Metadata {
   const article = getArticleBySlug(params.slug);
   if (!article) return {};
 
@@ -31,73 +31,55 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.title,
     description: article.description,
-    openGraph: {
-      title: article.title,
-      description: article.description,
-    },
   };
 }
 
 export default function ArticlePage({ params }: Props) {
   const article = getArticleBySlug(params.slug);
-  if (!article) notFound();
+
+  if (!article) return notFound();
 
   const product = getProductBySlug(article.productSlug);
-  if (!product) notFound();
+
+  if (!product) return notFound();
 
   const related = getRelatedArticles(article.slug);
 
   return (
-    <div className="container" style={{ maxWidth: 860, padding: "48px 0", lineHeight: 1.8 }}>
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: 40 }}>
 
-      {/* TITLE */}
-      <h1 style={{ fontSize: 34, fontWeight: 900 }}>
+      <h1 style={{ fontSize: 32, fontWeight: 800 }}>
         {article.title}
       </h1>
 
-      <p style={{ color: "#666", marginBottom: 24 }}>
+      <p style={{ marginBottom: 20, color: "#666" }}>
         {article.description}
       </p>
 
-      {/* CTA */}
-      <div style={{ padding: 16, border: "1px solid #eee", borderRadius: 12, marginBottom: 30 }}>
-        <p>🔥 Hitung cicilan real-time</p>
-        <Link href={`/simulasi-kredit/${product.slug}`} style={{ fontWeight: 700, color: "var(--accent)" }}>
-          Buka kalkulator {product.name} →
+      <div style={{ padding: 16, border: "1px solid #eee", marginBottom: 30 }}>
+        <Link href={`/simulasi-kredit/${product.slug}`}>
+          Hitung cicilan {product.name} →
         </Link>
       </div>
 
-      {/* CONTENT SEO */}
-      <h2>Kenapa {product.name} banyak dicari?</h2>
-      <p>
-        Motor ini populer karena harga terjangkau dan cicilan fleksibel.
-      </p>
+      <h2>Kenapa {product.name}?</h2>
+      <p>{product.description}</p>
 
-      <h2>Simulasi kredit {product.name}</h2>
-      <p>
-        Harga OTR: Rp {product.price.toLocaleString("id-ID")}
-      </p>
+      <h2>Harga</h2>
+      <p>{product.price.toLocaleString("id-ID")}</p>
 
-      {/* INTERNAL LINKING */}
-      <h2>Artikel terkait</h2>
+      <h2>Artikel lain</h2>
       <div style={{ display: "grid", gap: 10 }}>
         {related.map((r) => (
           <Link
             key={r.slug}
             href={`/artikel/${r.slug}`}
-            style={{
-              padding: 12,
-              border: "1px solid #eee",
-              borderRadius: 8,
-              textDecoration: "none",
-              color: "#111",
-            }}
+            style={{ padding: 10, border: "1px solid #eee" }}
           >
-            👉 {r.title}
+            {r.title}
           </Link>
         ))}
       </div>
-
     </div>
   );
 }
