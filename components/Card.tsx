@@ -71,18 +71,20 @@ export default function Card({ product }: CardProps) {
           <p style={styles.desc}>{product.description.slice(0, 90)}…</p>
 
           {/* LINK ARTIKEL SEO */}
-<Link
-  href={`/artikel/${product.slug}-kredit-dp-ringan-cicilan-murah`}
-  style={{
-    fontSize: 12,
-    color: "var(--accent)",
-    fontWeight: 600,
-    display: "inline-block",
-    marginBottom: 12,
-  }}
->
-  Baca artikel kredit →
-</Link>
+{article && (
+  <Link
+    href={`/artikel/${article.slug}`}
+    style={{
+      fontSize: 12,
+      color: "var(--accent)",
+      fontWeight: 600,
+      display: "inline-block",
+      marginBottom: 12,
+    }}
+  >
+    Baca artikel kredit →
+  </Link>
+)}
 
           <hr style={styles.sep} />
 
