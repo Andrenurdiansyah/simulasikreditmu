@@ -27,7 +27,9 @@ export async function generateMetadata({
 
   const { slug } = await params;
 
-  const product = getProductBySlug(slug);
+  const cleanSlug = slug.split("-dp-")[0];
+  const product = getProductBySlug(cleanSlug);
+
   if (!product) return {};
 
   return {
