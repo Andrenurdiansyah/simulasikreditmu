@@ -71,7 +71,7 @@ export default function HomePage() {
     </div>
 
     <div style={{ textAlign: "center", marginTop: 24 }}>
-      <Link href="/#produk" className="btn btn-outline">
+      <Link href="/produk" className="btn btn-outline">
         Lihat semua motor →
       </Link>
     </div>

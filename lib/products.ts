@@ -35,7 +35,7 @@ const productList: Product[] = [
     name: "Honda Vario 125",
     brand: "Honda",
     category: "Skuter Matik",
-    price: 28000000,
+    price: 10000000,
     dp: 2000000,
     tenor: [12, 18, 24, 36],
     image: "/images/products/vario-125.webp",
@@ -54,7 +54,7 @@ const productList: Product[] = [
   brand: "Honda",
   category: "Skuter Matik",
   price: 23200000,
-  dp: 2000000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
 
   image: "/images/products/scoopy.webp",
@@ -75,7 +75,7 @@ const productList: Product[] = [
   brand: "Honda",
   category: "Skuter Matik",
   price: 29500000,
-  dp: 3000000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
 
   image: "/images/products/vario-160.webp",
@@ -96,7 +96,7 @@ const productList: Product[] = [
     brand: "Honda",
     category: "Maxi Skuter",
     price: 39500000,
-    dp: 3000000,
+    dp: 1000000,
     tenor: [12, 18, 24, 36],
     image: "/images/products/pcx.webp",
     description:
@@ -114,7 +114,7 @@ const productList: Product[] = [
   brand: "Honda",
   category: "Skuter Matik",
   price: 29500000,
-  dp: 2500000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
 
   image: "/images/products/stylo.webp",
@@ -136,7 +136,7 @@ const productList: Product[] = [
   brand: "Yamaha",
   category: "Maxi Skuter",
   price: 36300000,
-  dp: 3000000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
   image: "/images/products/Nmax.png",
 
@@ -157,7 +157,7 @@ const productList: Product[] = [
   brand: "Yamaha",
   category: "Skuter Sport",
   price: 32500000,
-  dp: 2500000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
   image: "/images/products/Aerox.png",
 
@@ -178,7 +178,7 @@ const productList: Product[] = [
   brand: "Yamaha",
   category: "Skuter Matik",
   price: 25200000,
-  dp: 2000000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
   image: "/images/products/Fazio.png",
 
@@ -201,7 +201,7 @@ const productList: Product[] = [
   brand: "Suzuki",
   category: "Motor Sport",
   price: 37000000,
-  dp: 3000000,
+  dp: 1000000,
   tenor: [12, 18, 24, 36],
   image: "/images/products/Gsxr.webp",
 
