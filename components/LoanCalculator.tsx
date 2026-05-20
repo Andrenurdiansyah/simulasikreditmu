@@ -127,7 +127,7 @@ const result = useMemo(() => {
           <input
             type="range"
             min={8}
-            max={24}
+            max={30}
             step={0.5}
             value={bunga}
             onChange={(e) => setBunga(Number(e.target.value))}
