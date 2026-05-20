@@ -10,7 +10,12 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const products = getAllProducts();
+  const { slug } = await params;
+
+const cleanSlug = slug.split("-dp-ringan-cicilan-murah")[0];
+const product = getProductBySlug(cleanSlug);
+
+if (!product) notFound();
 
   return (
     <>
