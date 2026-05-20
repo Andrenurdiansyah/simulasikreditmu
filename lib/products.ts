@@ -35,8 +35,8 @@ const productList: Product[] = [
     name: "Honda Vario 125",
     brand: "Honda",
     category: "Skuter Matik",
-    price: 10000000,
-    dp: 2000000,
+    price: 25000000,
+    dp: 1000000,
     tenor: [12, 18, 24, 36],
     image: "/images/products/vario-125.webp",
     description:
