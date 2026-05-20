@@ -31,13 +31,19 @@ export async function generateMetadata({
   if (!product) return {};
 
   return {
-    title: `Simulasi Kredit ${product.name} – Cicilan & DP Terjangkau`,
-    description: `Hitung simulasi kredit ${product.name} harga OTR Rp${product.price.toLocaleString("id-ID")}. Atur DP, tenor, dan bunga sesuai kemampuanmu.`,
-    openGraph: {
-      title: `Simulasi Kredit ${product.name}`,
-      description: product.description,
-    },
-  };
+  title: `Simulasi Kredit ${product.name} – Cicilan & DP Terjangkau`,
+  description: `Hitung simulasi kredit ${product.name} harga OTR Rp${product.price.toLocaleString("id-ID")}. Atur DP, tenor, dan bunga sesuai kemampuanmu.`,
+
+  alternates: {
+    canonical: `/simulasi-kredit/${slug}`,
+  },
+
+  openGraph: {
+    title: `Simulasi Kredit ${product.name}`,
+    description: product.description,
+    url: `https://simulasikreditmu.my.id/simulasi-kredit/${slug}`,
+  },
+};
 }
 
 function formatRupiah(amount: number) {
