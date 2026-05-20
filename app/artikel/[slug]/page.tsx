@@ -13,16 +13,14 @@ type Props = {
 export async function generateStaticParams() {
   const { getAllArticles } = await import("@/lib/articles");
 
-  const data = getAllArticles();
-
-  console.log("ARTICLES:", data);
-
-  return data.map((a) => ({
+  return getAllArticles().map((a) => ({
     slug: a.slug,
   }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
   if (!article) return {};
 
@@ -55,12 +53,11 @@ export default function ArticlePage({ params }: Props) {
       </h1>
 
       <p style={{ color: "#666", marginBottom: 24, fontSize: 16 }}>
-        Update lengkap simulasi kredit <b>{product.name}</b> dengan opsi
-        <b> DP ringan</b>, cicilan fleksibel, dan tenor yang bisa disesuaikan
-        sesuai kondisi keuangan kamu.
+        Simulasi kredit <b>{product.name}</b> dengan skema DP ringan, cicilan
+        fleksibel, dan tenor menyesuaikan kemampuan kamu.
       </p>
 
-      {/* CTA BOX */}
+      {/* CTA */}
       <div
         style={{
           padding: 18,
@@ -70,7 +67,7 @@ export default function ArticlePage({ params }: Props) {
           background: "#fafafa",
         }}
       >
-        <p style={{ marginBottom: 6 }}>⚡ Mau lihat cicilan real-time?</p>
+        <p style={{ marginBottom: 6 }}>⚡ Coba hitung cicilan real-time</p>
 
         <Link
           href={`/simulasi-kredit/${product.slug}`}
@@ -84,53 +81,31 @@ export default function ArticlePage({ params }: Props) {
         </Link>
       </div>
 
-      {/* SECTION 1 */}
-      <h2 style={{ marginTop: 20 }}>Apa itu DP ringan di kredit motor?</h2>
+      {/* CONTENT */}
+      <h2>Apa itu DP ringan?</h2>
       <p>
-        DP ringan adalah skema pembayaran di mana kamu hanya perlu membayar
-        uang muka kecil di awal, sehingga motor bisa langsung dibawa pulang
-        tanpa harus nunggu tabungan besar.
+        DP ringan bikin kamu bisa ambil motor tanpa keluar uang besar di awal.
+        Cocok buat yang butuh kendaraan cepat buat kerja atau aktivitas harian.
       </p>
 
+      <h2>Simulasi {product.name}</h2>
       <p>
-        Skema ini sering dipilih karena lebih fleksibel, terutama untuk
-        pekerja baru, driver ojek online, atau yang butuh kendaraan cepat.
-      </p>
-
-      {/* SECTION 2 */}
-      <h2>Simulasi kredit {product.name}</h2>
-      <p>
-        Harga OTR saat ini: <b>Rp {price}</b>
+        Harga OTR sekarang: <b>Rp {price}</b>
       </p>
 
       <ul>
-        <li>DP bisa mulai rendah (tergantung leasing)</li>
-        <li>Tenor fleksibel 11–36 bulan</li>
-        <li>Bunga flat mengikuti kebijakan leasing</li>
-        <li>Cicilan bisa disesuaikan kemampuan bulanan</li>
+        <li>DP fleksibel sesuai leasing</li>
+        <li>Tenor 11–36 bulan</li>
+        <li>Cicilan bisa disesuaikan income</li>
       </ul>
 
-      {/* SECTION 3 */}
-      <h2>Kenapa banyak orang pilih skema ini?</h2>
+      <h2>Worth it gak?</h2>
       <p>
-        Karena lebih ringan di awal, kamu bisa tetap punya kendaraan tanpa
-        ganggu cash flow. Tapi tetap harus diperhitungkan supaya cicilan tidak
-        membebani penghasilan bulanan.
+        Kalau butuh kendaraan cepat, ini opsi realistis. Tapi tetap hitung
+        cicilan biar cashflow aman.
       </p>
 
-      {/* SECTION 4 */}
-      <h2>Apakah kredit ini worth it?</h2>
-      <p>
-        Kalau kamu butuh motor cepat untuk kerja atau mobilitas harian,
-        kredit bisa jadi solusi realistis.
-      </p>
-
-      <p>
-        Tapi kalau masih bisa nabung, selalu lebih aman untuk ambil DP lebih
-        besar biar cicilan lebih ringan.
-      </p>
-
-      {/* CTA FINAL */}
+      {/* FINAL CTA */}
       <div
         style={{
           marginTop: 40,
@@ -140,13 +115,7 @@ export default function ArticlePage({ params }: Props) {
           borderRadius: 12,
         }}
       >
-        <h3 style={{ marginBottom: 8 }}>
-          Coba hitung cicilan sekarang
-        </h3>
-
-        <p style={{ opacity: 0.8, marginBottom: 12 }}>
-          Atur DP, tenor, dan lihat simulasi sesuai kondisi kamu.
-        </p>
+        <h3 style={{ marginBottom: 8 }}>Hitung sekarang</h3>
 
         <Link
           href={`/simulasi-kredit/${product.slug}`}
@@ -156,7 +125,7 @@ export default function ArticlePage({ params }: Props) {
             textDecoration: "underline",
           }}
         >
-          Buka simulasi {product.name} →
+          Buka simulasi →
         </Link>
       </div>
     </div>
