@@ -12,12 +12,13 @@ type Props = {
 
 export async function generateStaticParams() {
   const { getAllArticles } = await import("@/lib/articles");
-  return getAllArticles().map((a) => ({ slug: a.slug }));
+
+  return getAllArticles().map((a) => ({
+    slug: a.slug,
+  }));
 }
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
   if (!article) return {};
 
@@ -26,7 +27,7 @@ export async function generateMetadata({
 
   return {
     title: article.title,
-    description: `Simulasi kredit ${product.name} DP ringan, cicilan bulanan terjangkau, dan tenor fleksibel. Hitung estimasi sekarang.`,
+    description: `Simulasi kredit ${product.name} DP ringan, cicilan motor terjangkau, tenor fleksibel. Hitung sekarang sebelum beli.`,
   };
 }
 
@@ -37,36 +38,41 @@ export default function ArticlePage({ params }: Props) {
   const product = getProductBySlug(article.productSlug);
   if (!product) notFound();
 
+  const price = product.price.toLocaleString("id-ID");
+
   return (
     <div
       className="container"
-      style={{ maxWidth: 820, padding: "48px 0", lineHeight: 1.8 }}
+      style={{ maxWidth: 860, padding: "48px 0", lineHeight: 1.8 }}
     >
-      <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 12 }}>
+      {/* TITLE */}
+      <h1 style={{ fontSize: 34, fontWeight: 900, marginBottom: 12 }}>
         {article.title}
       </h1>
 
-      <p style={{ color: "#666", marginBottom: 24 }}>
-        Update terbaru simulasi kredit <b>{product.name}</b> dengan skema DP ringan
-        dan cicilan yang bisa disesuaikan dengan kondisi keuangan kamu.
+      <p style={{ color: "#666", marginBottom: 24, fontSize: 16 }}>
+        Update lengkap simulasi kredit <b>{product.name}</b> dengan opsi
+        <b> DP ringan</b>, cicilan fleksibel, dan tenor yang bisa disesuaikan
+        sesuai kondisi keuangan kamu.
       </p>
 
+      {/* CTA BOX */}
       <div
         style={{
-          padding: 16,
+          padding: 18,
           border: "1px solid #eee",
           borderRadius: 12,
           marginBottom: 32,
           background: "#fafafa",
         }}
       >
-        <p style={{ marginBottom: 8 }}>💡 Mau hitung cicilan real-time?</p>
+        <p style={{ marginBottom: 6 }}>⚡ Mau lihat cicilan real-time?</p>
 
         <Link
           href={`/simulasi-kredit/${product.slug}`}
           style={{
             color: "var(--accent)",
-            fontWeight: 700,
+            fontWeight: 800,
             textDecoration: "underline",
           }}
         >
@@ -74,41 +80,79 @@ export default function ArticlePage({ params }: Props) {
         </Link>
       </div>
 
-      <h2>Kenapa banyak orang pilih DP ringan?</h2>
+      {/* SECTION 1 */}
+      <h2 style={{ marginTop: 20 }}>Apa itu DP ringan di kredit motor?</h2>
       <p>
-        DP ringan bikin kamu bisa punya motor tanpa harus keluar uang besar di awal.
+        DP ringan adalah skema pembayaran di mana kamu hanya perlu membayar
+        uang muka kecil di awal, sehingga motor bisa langsung dibawa pulang
+        tanpa harus nunggu tabungan besar.
       </p>
 
+      <p>
+        Skema ini sering dipilih karena lebih fleksibel, terutama untuk
+        pekerja baru, driver ojek online, atau yang butuh kendaraan cepat.
+      </p>
+
+      {/* SECTION 2 */}
       <h2>Simulasi kredit {product.name}</h2>
       <p>
-        Harga OTR <b>Rp {product.price.toLocaleString("id-ID")}</b>
+        Harga OTR saat ini: <b>Rp {price}</b>
       </p>
 
-      <h2>Apakah worth it?</h2>
+      <ul>
+        <li>DP bisa mulai rendah (tergantung leasing)</li>
+        <li>Tenor fleksibel 11–36 bulan</li>
+        <li>Bunga flat mengikuti kebijakan leasing</li>
+        <li>Cicilan bisa disesuaikan kemampuan bulanan</li>
+      </ul>
+
+      {/* SECTION 3 */}
+      <h2>Kenapa banyak orang pilih skema ini?</h2>
       <p>
-        Kalau butuh motor cepat tanpa nabung lama, ini opsi realistis.
+        Karena lebih ringan di awal, kamu bisa tetap punya kendaraan tanpa
+        ganggu cash flow. Tapi tetap harus diperhitungkan supaya cicilan tidak
+        membebani penghasilan bulanan.
       </p>
 
+      {/* SECTION 4 */}
+      <h2>Apakah kredit ini worth it?</h2>
+      <p>
+        Kalau kamu butuh motor cepat untuk kerja atau mobilitas harian,
+        kredit bisa jadi solusi realistis.
+      </p>
+
+      <p>
+        Tapi kalau masih bisa nabung, selalu lebih aman untuk ambil DP lebih
+        besar biar cicilan lebih ringan.
+      </p>
+
+      {/* CTA FINAL */}
       <div
         style={{
           marginTop: 40,
-          padding: 20,
+          padding: 22,
           background: "#111",
           color: "#fff",
           borderRadius: 12,
         }}
       >
-        <h3 style={{ marginBottom: 8 }}>Coba hitung sekarang</h3>
+        <h3 style={{ marginBottom: 8 }}>
+          Coba hitung cicilan sekarang
+        </h3>
+
+        <p style={{ opacity: 0.8, marginBottom: 12 }}>
+          Atur DP, tenor, dan lihat simulasi sesuai kondisi kamu.
+        </p>
 
         <Link
           href={`/simulasi-kredit/${product.slug}`}
           style={{
             color: "#fff",
-            fontWeight: 700,
+            fontWeight: 800,
             textDecoration: "underline",
           }}
         >
-          Buka simulasi →
+          Buka simulasi {product.name} →
         </Link>
       </div>
     </div>

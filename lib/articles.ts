@@ -4,7 +4,7 @@ export function getAllArticles() {
   const products = getAllProducts();
 
   return products.map((p) => ({
-    slug: `${p.slug}-dp-ringan-cicilan-murah`,
+    slug: p.slug, // ✅ GUNAIN SLUG PRODUCT AJA
     productSlug: p.slug,
     title: `Kredit ${p.name} DP Ringan Cicilan Murah`,
   }));

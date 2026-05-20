@@ -65,7 +65,7 @@ export default function Card({ product }: CardProps) {
 
           {/* LINK ARTIKEL SEO */}
 <Link
-  href={`/artikel/${product.slug}-dp-ringan-cicilan-murah`}
+  href={`/artikel/${product.slug}`}
   style={{
     fontSize: 12,
     color: "var(--accent)",
