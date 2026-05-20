@@ -86,12 +86,14 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1.7,
     maxWidth: 560,
   },
-  cards: {
+    cards: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
+    // ⬇️ UBAH BARIS INI ⬇️
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", 
     gap: 20,
     marginBottom: 40,
   },
+    
   card: {
     background: "var(--bg-card)",
     border: "1px solid var(--border)",
