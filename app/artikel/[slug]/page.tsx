@@ -7,10 +7,11 @@ import {
 } from "@/lib/articles";
 import { getProductBySlug } from "@/lib/products";
 
+// 1. FIX: Sesuaikan tipe Props agar params berupa Promise
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -21,8 +22,10 @@ export async function generateStaticParams() {
   }));
 }
 
+// 2. FIX: Gunakan await params di generateMetadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = getArticleBySlug(params.slug);
+  const { slug } = await params; 
+  const article = getArticleBySlug(slug);
   if (!article) return {};
 
   const product = getProductBySlug(article.productSlug);
@@ -38,8 +41,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ArticlePage({ params }: Props) {
-  const article = getArticleBySlug(params.slug);
+// 3. FIX: Ubah komponen menjadi async dan gunakan await params
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params;
+  
+  const article = getArticleBySlug(slug);
   if (!article) notFound();
 
   const product = getProductBySlug(article.productSlug);
