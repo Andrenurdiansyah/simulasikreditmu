@@ -18,9 +18,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Test() {
-  return <div>ARTIKEL ROUTE WORKS</div>;
-}
 
 export async function generateMetadata(
   { params }: Props
