@@ -55,29 +55,28 @@ export default function HomePage() {
       </section>
 
       {/* Product Grid */}
-      <section className="section" id="produk">
-        <div className="container">
-          <h2 className="section-title">Pilih Motor Impianmu</h2>
-          <p className="section-subtitle">
-            Klik produk untuk menghitung simulasi kredit secara detail.
-          </p>
-<div style={styles.carousel}>
-  {products.slice(0, 8).map((product) => (
-    <div key={product.slug} style={styles.slide}>
-      <Card product={product} />
-    </div>
-  ))}
-</div>
+     <section className="section" id="produk">
+  <div className="container">
+    <h2 className="section-title">Pilih Motor Impianmu</h2>
+    <p className="section-subtitle">
+      Klik produk untuk menghitung simulasi kredit secara detail.
+    </p>
 
-<div style={{ textAlign: "center", marginTop: 24 }}>
-  <Link href="/#produk" className="btn btn-outline">
-    Lihat semua motor →
-  </Link>
-</div>
-  ))}
-</div>
+    <div style={styles.carousel}>
+      {products.slice(0, 8).map((product) => (
+        <div key={product.slug} style={styles.slide}>
+          <Card product={product} />
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div style={{ textAlign: "center", marginTop: 24 }}>
+      <Link href="/#produk" className="btn btn-outline">
+        Lihat semua motor →
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* How it works */}
       <section
