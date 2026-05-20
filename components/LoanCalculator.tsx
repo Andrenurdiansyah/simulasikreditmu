@@ -25,17 +25,45 @@ export default function LoanCalculator({ product }: LoanCalculatorProps) {
 );
   const [bunga, setBunga] = useState(14); // persen per tahun flat
 
-  const result = useMemo(() => {
-    const pokok = product.price - dp;
-    const totalBunga = pokok * (bunga / 100) * (tenor / 12);
-    const totalBayar = pokok + totalBunga;
-    const cicilan = totalBayar / tenor;
-    const dpPercent = (dp / product.price) * 100;
+  const ADMIN_FEE = 1_000_000;
+const PROVISION_FEE = 1_000_000;
 
-    return { pokok, totalBunga, totalBayar, cicilan, dpPercent };
-  }, [dp, tenor, bunga, product.price]);
+const result = useMemo(() => {
+  const pokok = product.price - dp;
 
-  const dpMin = Math.round(product.price * 0.1); // min 10%
+  const biayaTambahan = ADMIN_FEE + PROVISION_FEE;
+
+  // principal yang benar-benar dibiayai (kayak di leasing)
+  const pv = pokok + biayaTambahan;
+
+  const r = bunga / 100 / 12; // monthly rate
+  const n = tenor;
+
+  // PMT (annuity)
+  const cicilan =
+    r === 0
+      ? pv / n
+      : (pv * r * Math.pow(1 + r, n)) /
+        (Math.pow(1 + r, n) - 1);
+
+  const totalBayar = cicilan * n;
+
+  const totalBunga = totalBayar - pv;
+
+  const dpPercent = (dp / product.price) * 100;
+
+  return {
+    pokok,
+    biayaTambahan,
+    pv,
+    totalBunga,
+    totalBayar,
+    cicilan,
+    dpPercent,
+  };
+}, [dp, tenor, bunga, product.price]);
+
+  const dpMin = product.dp;
   const dpMax = Math.round(product.price * 0.6); // max 60%
 
   return (
