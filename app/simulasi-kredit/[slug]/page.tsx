@@ -21,13 +21,10 @@ export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
-
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
-  const cleanSlug = slug.split("-dp-")[0];
+  const cleanSlug = slug.split("-dp-ringan-cicilan-murah")[0];
   const product = getProductBySlug(cleanSlug);
 
   if (!product) return {};
