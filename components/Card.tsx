@@ -63,6 +63,20 @@ export default function Card({ product }: CardProps) {
           <h3 style={styles.name}>{product.name}</h3>
           <p style={styles.desc}>{product.description.slice(0, 90)}…</p>
 
+          {/* LINK ARTIKEL SEO */}
+<Link
+  href={`/artikel/${product.slug}-dp-ringan-cicilan-murah`}
+  style={{
+    fontSize: 12,
+    color: "var(--accent)",
+    fontWeight: 600,
+    display: "inline-block",
+    marginBottom: 12,
+  }}
+>
+  Baca artikel DP ringan →
+</Link>
+
           <hr style={styles.sep} />
 
           <div style={styles.priceRow}>
