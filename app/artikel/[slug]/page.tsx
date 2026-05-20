@@ -13,15 +13,15 @@ type Props = {
   };
 };
 
-export function generateStaticParams() {
-  const { getAllArticles } = require("@/lib/articles");
+export async function generateStaticParams() {
+  const { getAllArticles } = await import("@/lib/articles");
 
-  return getAllArticles().map((a: any) => ({
+  return getAllArticles().map((a) => ({
     slug: a.slug,
   }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
   if (!article) return {};
 
@@ -29,57 +29,126 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!product) return {};
 
   return {
-    title: article.title,
+    title: `${article.title} | Simulasi Kredit Motor`,
     description: article.description,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+    },
   };
 }
 
 export default function ArticlePage({ params }: Props) {
   const article = getArticleBySlug(params.slug);
-
-  if (!article) return notFound();
+  if (!article) notFound();
 
   const product = getProductBySlug(article.productSlug);
-
-  if (!product) return notFound();
+  if (!product) notFound();
 
   const related = getRelatedArticles(article.slug);
 
   return (
-    <div style={{ maxWidth: 860, margin: "0 auto", padding: 40 }}>
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: 48, lineHeight: 1.8 }}>
 
-      <h1 style={{ fontSize: 32, fontWeight: 800 }}>
+      {/* BREADCRUMB */}
+      <div style={{ fontSize: 12, color: "#888", marginBottom: 20 }}>
+        <Link href="/" style={{ color: "#888" }}>Home</Link> /{" "}
+        <Link href="/artikel" style={{ color: "#888" }}>Artikel</Link> /{" "}
+        <span>{product.name}</span>
+      </div>
+
+      {/* TITLE */}
+      <h1 style={{ fontSize: 36, fontWeight: 900, marginBottom: 10 }}>
         {article.title}
       </h1>
 
-      <p style={{ marginBottom: 20, color: "#666" }}>
+      <p style={{ color: "#666", marginBottom: 25 }}>
         {article.description}
       </p>
 
-      <div style={{ padding: 16, border: "1px solid #eee", marginBottom: 30 }}>
-        <Link href={`/simulasi-kredit/${product.slug}`}>
-          Hitung cicilan {product.name} →
+      {/* HERO CTA */}
+      <div style={{
+        padding: 18,
+        border: "1px solid #eee",
+        borderRadius: 12,
+        marginBottom: 35,
+        background: "#fafafa"
+      }}>
+        <p style={{ marginBottom: 8 }}>🔥 Simulasi kredit real-time</p>
+
+        <Link
+          href={`/simulasi-kredit/${product.slug}`}
+          style={{ fontWeight: 800, color: "var(--accent)" }}
+        >
+          Hitung cicilan {product.name} sekarang →
         </Link>
       </div>
 
-      <h2>Kenapa {product.name}?</h2>
-      <p>{product.description}</p>
+      {/* SECTION 1 */}
+      <h2 style={{ marginBottom: 10 }}>Kenapa {product.name} banyak dicari?</h2>
+      <p style={{ marginBottom: 25 }}>
+        {product.name} jadi pilihan karena harga masih masuk, irit bensin, dan cicilan bisa diatur sesuai kemampuan.
+      </p>
 
-      <h2>Harga</h2>
-      <p>{product.price.toLocaleString("id-ID")}</p>
+      {/* SECTION 2 */}
+      <h2 style={{ marginBottom: 10 }}>Spesifikasi singkat</h2>
+      <ul style={{ marginBottom: 25 }}>
+        {Object.entries(product.specs || {}).map(([key, value]) => (
+          <li key={key}>
+            <b>{key}:</b> {value}
+          </li>
+        ))}
+      </ul>
 
-      <h2>Artikel lain</h2>
-      <div style={{ display: "grid", gap: 10 }}>
+      {/* SECTION 3 */}
+      <h2 style={{ marginBottom: 10 }}>Harga & simulasi</h2>
+      <p style={{ marginBottom: 10 }}>
+        Harga OTR: <b>Rp {product.price.toLocaleString("id-ID")}</b>
+      </p>
+      <p style={{ marginBottom: 25 }}>
+        DP mulai: <b>Rp {product.dp.toLocaleString("id-ID")}</b>
+      </p>
+
+      <Link
+        href={`/simulasi-kredit/${product.slug}`}
+        style={{
+          display: "inline-block",
+          padding: "10px 16px",
+          background: "var(--accent)",
+          color: "#fff",
+          borderRadius: 8,
+          fontWeight: 700,
+          marginBottom: 40
+        }}
+      >
+        Coba simulasi →
+      </Link>
+
+      {/* RELATED */}
+      <h2 style={{ marginBottom: 15 }}>Artikel terkait</h2>
+
+      <div style={{ display: "grid", gap: 12 }}>
         {related.map((r) => (
           <Link
             key={r.slug}
             href={`/artikel/${r.slug}`}
-            style={{ padding: 10, border: "1px solid #eee" }}
+            style={{
+              padding: 14,
+              border: "1px solid #eee",
+              borderRadius: 10,
+              textDecoration: "none",
+              color: "#111",
+              transition: "0.2s",
+            }}
           >
-            {r.title}
+            <div style={{ fontWeight: 700 }}>{r.title}</div>
+            <div style={{ fontSize: 12, color: "#777" }}>
+              Klik untuk lihat simulasi →
+            </div>
           </Link>
         ))}
       </div>
+
     </div>
   );
 }

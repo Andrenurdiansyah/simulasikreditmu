@@ -27,11 +27,7 @@ interface CardProps {
 
 export default function Card({ product }: CardProps) {
 
- const articles = getAllArticles().filter(
-    (a) => a.productSlug === product.slug
-  );
-
-  const article = articles[0]; // selalu 1 biar aman
+const articleSlug = product.slug;
 
 
   const defaultTenor = product.tenor.includes(36)
@@ -76,20 +72,18 @@ export default function Card({ product }: CardProps) {
 
           
 {/* ARTICLE LINK */}
-          {article && (
-            <Link
-              href={`/artikel/${article.slug}`}
-              style={{
-                fontSize: 12,
-                color: "var(--accent)",
-                fontWeight: 600,
-                display: "inline-block",
-                marginBottom: 12,
-              }}
-            >
-              Baca artikel kredit →
-            </Link>
-          )}
+          <Link
+  href={`/artikel/${articleSlug}`}
+  style={{
+    fontSize: 12,
+    color: "var(--accent)",
+    fontWeight: 600,
+    display: "inline-block",
+    marginBottom: 12,
+  }}
+>
+  Baca artikel kredit →
+</Link>
 
           <hr style={styles.sep} />
 
