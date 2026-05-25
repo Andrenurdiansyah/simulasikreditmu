@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://simulasikredit.id"),
+  metadataBase: new URL("https://www.simulasikreditmu.my.id"),
    icons: {
     icon: "/images/favicon.png",
   },
