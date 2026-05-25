@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug(article.productSlug);
   if (!product) return {};
 
-  const domain = "https://simulasikreditmu.com"; // 👈 Ganti dengan domain asli kamu
+  const domain = "https://www.simulasikreditmu.my.id"; // 👈 Ganti dengan domain asli kamu
   const url = `${domain}/artikel/${slug}`;
 
   return {
@@ -41,7 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "id_ID",
       type: "article",
       // Masukkan gambar jika ada untuk preview di sosmed/WhatsApp
-      images: product.image ? [{ url: `${domain}${product.image}`, alt: article.title }] : [],
+      "image": product.image
+  ? `https://www.simulasikreditmu.my.id${product.image}`
+  : [],
     },
     twitter: {
       card: "summary_large_image",
@@ -92,11 +94,11 @@ export default async function ArticlePage({ params }: Props) {
       },
       {
         "@type": "TechArticle",
-        "@id": `https://simulasikreditmu.com/artikel/${article.slug}#article`,
+        "@id": `https://www.simulasikreditmu.com/artikel/${article.slug}#article`,
         "headline": article.title,
         "description": article.description,
         "inLanguage": "id-ID",
-        "mainEntityOfPage": `https://simulasikreditmu.com/artikel/${article.slug}`,
+        "mainEntityOfPage": `https://www.simulasikreditmu.com/artikel/${article.slug}`,
         "author": {
           "@type": "Organization",
           "name": "SimulasiKreditMu"
