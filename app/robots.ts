@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "", // Diubah dari [] menjadi ""
     },
-    sitemap: "https://simulasikreditmu.my.id/sitemap.xml",
+    sitemap:"https://www.simulasikreditmu.my.id/sitemap.xml",
   };
 }
