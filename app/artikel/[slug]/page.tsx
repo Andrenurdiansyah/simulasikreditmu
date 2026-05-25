@@ -76,6 +76,8 @@ export default async function ArticlePage({ params }: Props) {
 
   const related = getRelatedArticles(article.slug);
 
+  const domain = "https://www.simulasikreditmu.my.id";
+
   // 2. SCHEMA MARKUP (JSON-LD) - Kunci utama Rich Snippet Google
  const jsonLd = {
   "@context": "https://schema.org",
