@@ -41,7 +41,7 @@ export async function generateMetadata({
   openGraph: {
     title: `Simulasi Kredit ${product.name}`,
     description: product.description,
-    url: `https://simulasikreditmu.my.id/simulasi-kredit/${slug}`,
+    url: `https://www.simulasikreditmu.my.id/simulasi-kredit/${slug}`,
   },
 };
 }
