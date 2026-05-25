@@ -33,18 +33,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     keywords: article.keywords || [product.name, "kredit motor", "simulasi cicilan", "DP murah"],
     authors: [{ name: "SimulasiKreditMu Team" }],
-    openGraph: {
-      title: `${article.title} | Simulasi Kredit Motor`,
-      description: article.description,
-      url: url,
-      siteName: "SimulasiKreditMu",
-      locale: "id_ID",
-      type: "article",
-      // Masukkan gambar jika ada untuk preview di sosmed/WhatsApp
-      "image": product.image
-  ? `https://www.simulasikreditmu.my.id${product.image}`
-  : [],
-    },
+  openGraph: {
+  title: `${article.title} | Simulasi Kredit Motor`,
+  description: article.description,
+  url: url,
+  siteName: "SimulasiKreditMu",
+  locale: "id_ID",
+  type: "article",
+
+  images: product.image
+    ? [
+        {
+          url: `https://www.simulasikreditmu.my.id${product.image}`,
+          alt: article.title,
+        },
+      ]
+    : [],
+},
     twitter: {
       card: "summary_large_image",
       title: article.title,
