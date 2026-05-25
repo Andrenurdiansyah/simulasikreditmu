@@ -77,40 +77,42 @@ export default async function ArticlePage({ params }: Props) {
   const related = getRelatedArticles(article.slug);
 
   // 2. SCHEMA MARKUP (JSON-LD) - Kunci utama Rich Snippet Google
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Product",
-        "name": product.name,
-        "image": product.image ? `https://simulasikreditmu.com${product.image}` : "",
-        "description": product.description,
-        "brand": {
-          "@type": "Brand",
-          "name": product.brand
-        },
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "IDR",
-          "price": product.price,
-          "priceValidUntil": "2027-12-31",
-          "availability": "https://schema.org/InStock"
-        }
+ const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      name: product.name,
+      image: product.image
+        ? `${domain}${product.image}`
+        : "",
+      description: product.description,
+      brand: {
+        "@type": "Brand",
+        name: product.brand,
       },
-      {
-        "@type": "TechArticle",
-        "@id": `https://www.simulasikreditmu.com/artikel/${article.slug}#article`,
-        "headline": article.title,
-        "description": article.description,
-        "inLanguage": "id-ID",
-        "mainEntityOfPage": `https://www.simulasikreditmu.com/artikel/${article.slug}`,
-        "author": {
-          "@type": "Organization",
-          "name": "SimulasiKreditMu"
-        }
-      }
-    ]
-  };
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "IDR",
+        price: product.price,
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+      },
+    },
+    {
+      "@type": "TechArticle",
+      "@id": `${domain}/artikel/${article.slug}#article`,
+      headline: article.title,
+      description: article.description,
+      inLanguage: "id-ID",
+      mainEntityOfPage: `${domain}/artikel/${article.slug}`,
+      author: {
+        "@type": "Organization",
+        name: "SimulasiKreditMu",
+      },
+    },
+  ],
+};
 
   return (
     <>
