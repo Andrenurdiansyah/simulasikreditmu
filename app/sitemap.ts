@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllProducts } from "@/lib/products";
 
-const BASE_URL = "https://simulasikreditmu.my.id";
+const BASE_URL =  "https://www.simulasikreditmu.my.id";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const products = getAllProducts();
