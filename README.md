@@ -126,9 +126,9 @@ simulasi_kredit/
 │   └── products.ts
 │
 ├── screenshots/
-│   ├── homepage.png
-│   ├── calculator.png
-│   └── product-page.png
+│   ├── homepage.jpg
+│   ├── calculator.jpg
+│   └── product.jpg
 │
 └── README.md
 ```
