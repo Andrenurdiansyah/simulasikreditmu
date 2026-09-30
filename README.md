@@ -1,4 +1,4 @@
-# 🚗 simulasiKreditmu.my.id
+# 🚗 simulasikreditmu.my.id
 
 > Website simulasi kredit motor yang SEO-friendly, responsive, dan siap dikembangkan menjadi platform informasi & kalkulator kredit kendaraan.
 
