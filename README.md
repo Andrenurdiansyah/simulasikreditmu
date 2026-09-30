@@ -1,78 +1,210 @@
-# SimulasiKreditmu.my.id
+# 🚗 simulasiKreditmu.my.id
 
-Website simulasi kredit motor yang SEO-friendly dan siap monetisasi.
+> Website simulasi kredit motor yang SEO-friendly, responsive, dan siap dikembangkan menjadi platform informasi & kalkulator kredit kendaraan.
 
-## 🚀 Setup
+<p align="center">
 
-```bash
-npx create-next-app@latest simulasi_kredit --typescript --tailwind --eslint --app
-cd simulasi_kredit
+<a href="https://simulasikreditmu.my.id">
+  <img src="https://img.shields.io/badge/🌐%20Live%20Demo-simulasikreditmu.my.id-2ea44f?style=for-the-badge" alt="Live Demo">
+</a>
 
-# Salin semua file yang sudah di-generate ke dalam project
-# Lalu install dependencies
-npm install
+</p>
 
-# Jalankan development server
-npm run dev
-```
+---
 
-## 📁 Struktur Project
+## 📸 Preview
 
-```
+<p align="center">
+  <a href="https://simulasikreditmu.my.id">
+    <img src="./screenshots/homepage.jpg" alt="simulasiKreditmu.my.id Homepage" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Click the preview to visit the live website.</i>
+</p>
+
+---
+
+## ✨ Features
+
+* 🧮 **Credit Calculator** — Simulasi cicilan berdasarkan harga, DP, dan tenor
+* 🏍️ **Motor Catalog** — Daftar produk motor dengan estimasi cicilan
+* 📄 **Dynamic Product Pages** — Halaman produk dibuat secara dinamis berdasarkan slug
+* 📱 **Responsive Design** — Optimized for desktop, tablet, and mobile
+* 🔍 **SEO Friendly** — Metadata, sitemap, robots.txt, and structured data
+* 📊 **Product Information** — Spesifikasi dan informasi kendaraan
+* 💰 **Monetization Ready** — Prepared for Google AdSense integration
+* ⚡ **Fast & Lightweight** — Built with Next.js App Router
+* 🗺️ **Automatic Sitemap** — Sitemap generated automatically from available products
+
+---
+
+## 🖥️ Screenshots
+
+### 🏠 Homepage
+
+<p align="center">
+  <a href="https://simulasikreditmu.my.id">
+    <img src="./screenshots/homepage.jpg" alt="Homepage" width="900">
+  </a>
+</p>
+
+### 🧮 Credit Calculator
+
+<p align="center">
+  <a href="https://simulasikreditmu.my.id">
+    <img src="./screenshots/calculator.jpg" alt="Credit Calculator" width="900">
+  </a>
+</p>
+
+### 🏍️ Product Page
+
+<p align="center">
+  <a href="https://simulasikreditmu.my.id">
+    <img src="./screenshots/product.jpg" alt="Product Page" width="900">
+  </a>
+</p>
+
+---
+
+## 🌐 Live Demo
+
+### 👉 [Visit simulasiKreditmu.my.id](https://simulasikreditmu.my.id)
+
+The production website is deployed and accessible publicly.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology             | Usage                                      |
+| ---------------------- | ------------------------------------------ |
+| **Next.js**            | React framework & application architecture |
+| **TypeScript**         | Type-safe development                      |
+| **Tailwind CSS**       | UI styling                                 |
+| **Next.js App Router** | Routing & page rendering                   |
+| **JSON-LD**            | Structured data for SEO                    |
+| **Vercel**             | Deployment                                 |
+
+---
+
+## 📁 Project Structure
+
+```text
 simulasi_kredit/
 ├── app/
-│   ├── layout.tsx          # Root layout + metadata global
-│   ├── page.tsx            # Homepage dengan product grid
-│   ├── globals.css         # Design system & CSS variables
-│   ├── sitemap.ts          # Auto-generated sitemap
-│   ├── robots.ts           # robots.txt
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── globals.css
+│   ├── sitemap.ts
+│   ├── robots.ts
+│   │
 │   ├── simulasi-kredit/
 │   │   └── [slug]/
-│   │       └── page.tsx    # Dynamic product page + kalkulator
-│   ├── tentang/page.tsx
-│   ├── kontak/page.tsx
-│   ├── privacy-policy/page.tsx
-│   └── disclaimer/page.tsx
+│   │       └── page.tsx
+│   │
+│   ├── tentang/
+│   │   └── page.tsx
+│   │
+│   ├── kontak/
+│   │   └── page.tsx
+│   │
+│   ├── privacy-policy/
+│   │   └── page.tsx
+│   │
+│   └── disclaimer/
+│       └── page.tsx
 │
 ├── components/
-│   ├── Navbar.tsx          # Sticky navbar dengan mobile menu
-│   ├── Footer.tsx          # Footer dengan links
-│   ├── LoanCalculator.tsx  # Kalkulator interaktif (client component)
-│   └── Card.tsx            # Product card dengan estimasi cicilan
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── LoanCalculator.tsx
+│   └── Card.tsx
 │
-└── lib/
-    └── products.ts         # Database produk motor
+├── lib/
+│   └── products.ts
+│
+├── screenshots/
+│   ├── homepage.png
+│   ├── calculator.png
+│   └── product-page.png
+│
+└── README.md
 ```
 
-## ➕ Cara Tambah Produk Baru
+---
 
-Buka `lib/products.ts` dan tambahkan object baru ke dalam array `productList`:
+## 🏍️ Adding a New Product
+
+Open:
+
+```text
+lib/products.ts
+```
+
+Then add a new product to `productList`:
 
 ```typescript
 {
-  slug: "honda-vario-160",        // URL: /simulasi-kredit/honda-vario-160
+  slug: "honda-vario-160",
   name: "Honda Vario 160",
   brand: "Honda",
   category: "Maxi Skuter",
-  price: 35000000,                // Harga OTR dalam Rupiah
-  dp: 7000000,                    // DP default
-  tenor: [12, 18, 24, 36, 48],   // Tenor yang tersedia (bulan)
+  price: 35000000,
+  dp: 7000000,
+  tenor: [12, 18, 24, 36, 48],
   description: "Deskripsi singkat motor ini...",
-  specs: {                         // Opsional
+  specs: {
     "Mesin": "160 cc, SOHC",
     "Transmisi": "Otomatis CVT",
   },
 }
 ```
 
-Halaman produk akan otomatis dibuat di `/simulasi-kredit/honda-vario-160`.
+The product page will automatically become available at:
 
-## 💰 Monetisasi (Google AdSense)
+```text
+/simulasi-kredit/honda-vario-160
+```
 
-Tambahkan script AdSense di `app/layout.tsx`:
+---
+
+## 🔍 SEO
+
+The project includes several SEO-focused features:
+
+* Unique metadata for product pages
+* Dynamic `generateMetadata`
+* JSON-LD structured data
+* Automatic sitemap generation
+* `robots.txt`
+* SEO-friendly URL structure
+* Dynamic product pages
+* Responsive and mobile-friendly layout
+
+Before production deployment, update the production domain inside:
+
+```text
+app/layout.tsx
+app/sitemap.ts
+```
+
+For example:
+
+```text
+https://simulasikreditmu.my.id
+```
+
+---
+
+## 💰 Monetization
+
+The project is prepared for future monetization through platforms such as **Google AdSense**.
+
+Example integration:
 
 ```tsx
-// Di dalam <head> di layout.tsx
 <script
   async
   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
@@ -80,23 +212,110 @@ Tambahkan script AdSense di `app/layout.tsx`:
 />
 ```
 
-Lalu buat komponen `AdBanner.tsx` dan tempatkan di halaman produk atau homepage.
+An `AdBanner.tsx` component can then be added and placed on selected pages.
 
-## 🔍 SEO
+Potential monetization opportunities include:
 
-- Setiap halaman produk punya metadata unik (`generateMetadata`)
-- JSON-LD structured data di halaman produk
-- `sitemap.ts` otomatis generate sitemap dari semua produk
-- `robots.ts` sudah dikonfigurasi
-- Ganti `https://simulasikredit.id` di `sitemap.ts` dan `layout.tsx` dengan domain aslimu
+* Google AdSense
+* Affiliate links
+* Dealer referrals
+* Financing leads
+* Sponsored listings
+* Featured motorcycle products
 
-## 🌐 Deploy
+---
+
+## 🚀 Getting Started
+
+### 1. Create the project
 
 ```bash
-# Deploy ke Vercel (recommended)
-npx vercel
+npx create-next-app@latest simulasi_kredit --typescript --tailwind --eslint --app
+```
 
-# Atau build untuk production
+### 2. Enter the project
+
+```bash
+cd simulasi_kredit
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Run development server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 📦 Production Build
+
+Build the application:
+
+```bash
 npm run build
+```
+
+Start production server:
+
+```bash
 npm start
 ```
+
+---
+
+## ☁️ Deployment
+
+The project can be deployed using **Vercel**:
+
+```bash
+npx vercel
+```
+
+Or connect the GitHub repository directly to Vercel for automatic deployments.
+
+---
+
+## 📌 Project Status
+
+**Status:** 🚀 Active Development
+
+The project is currently being developed with a focus on:
+
+* Expanding motorcycle product data
+* Improving credit calculation features
+* SEO optimization
+* Content expansion
+* Monetization
+* Performance improvements
+
+---
+
+## 📄 License
+
+This project is for personal and educational purposes.
+
+---
+
+<p align="center">
+
+Built with ❤️ using Next.js & TypeScript
+
+<br>
+
+<a href="https://simulasikreditmu.my.id">
+  🌐 simulasiKreditmu.my.id
+</a>
+
+</p>
